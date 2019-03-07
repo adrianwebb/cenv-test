@@ -2,6 +2,13 @@ config:
   aws_networks:
     - aws-us-east-1
     - aws-us-east-2
+
 parents:
-  - project: core
-    profile: aws-network
+  - project: kube
+    profile: aws
+
+project:
+  kube:
+    provider: git
+    remote: https://github.com/venturiscm/cenv-kubernetes.git
+    reference: master
