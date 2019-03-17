@@ -6,9 +6,3 @@ config:
 parents:
   - project: kube
     profile: aws
-
-project:
-  kube:
-    provider: git
-    remote: https://github.com/venturiscm/cenv-kubernetes.git
-    reference: master
