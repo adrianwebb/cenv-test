@@ -1,1 +1,6 @@
 profiles: .
+modules:
+  kube:
+    provider: git
+    remote: https://github.com/venturiscm/cenv-kubernetes.git
+    reference: master
