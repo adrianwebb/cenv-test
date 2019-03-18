@@ -4,5 +4,5 @@ config:
     - aws-us-east-2
 
 parents:
-  - project: kube
+  - module: kube
     profile: aws
