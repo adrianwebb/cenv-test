@@ -1,8 +1,11 @@
+parents:
+  - module: cluster
+    profile: aws-cenv
+
+  - module: kube
+    profile: aws
+
 config:
   aws_networks:
     - aws-us-east-1
     - aws-us-east-2
-
-parents:
-  - module: kube
-    profile: aws
