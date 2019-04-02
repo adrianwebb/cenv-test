@@ -1,0 +1,55 @@
+
+config:
+  personal_domain: webb.sh
+
+  dns_default_timeout: 300
+  dns_mx_timeout: 3600
+
+  google_name_servers:
+    - 1 ASPMX.L.GOOGLE.COM.
+    - 5 ALT2.ASPMX.L.GOOGLE.COM.
+    - 5 ALT1.ASPMX.L.GOOGLE.COM.
+    - 10 ALT3.ASPMX.L.GOOGLE.COM.
+    - 10 ALT4.ASPMX.L.GOOGLE.COM.
+
+  google_domain_target: ghs.googlehosted.com.
+  home_ip_target: webb.freemyip.com.
+
+domain:
+  "@personal_domain":
+    provider: route53
+    records:
+      - name: "@personal_domain"
+        type: MX
+        ttl: "@dns_mx_timeout"
+        value: "@google_name_servers"
+      - name: "@personal_domain"
+        type: TXT
+        ttl: "@dns_default_timeout"
+        value: "@google_site_verification"
+      - name: "@personal_domain"
+        type: TXT
+        ttl: "@dns_default_timeout"
+        value: "v=spf1 include:_spf.google.com ~all"
+
+      - name: "mail.@personal_domain"
+        type: CNAME
+        ttl: "@dns_default_timeout"
+        value: "@google_domain_target"
+      - name: "groups.@personal_domain"
+        type: CNAME
+        ttl: "@dns_default_timeout"
+        value: "@google_domain_target"
+      - name: "drive.@personal_domain"
+        type: CNAME
+        ttl: "@dns_default_timeout"
+        value: "@google_domain_target"
+      - name: "calendar.@personal_domain"
+        type: CNAME
+        ttl: "@dns_default_timeout"
+        value: "@google_domain_target"
+
+      - name: "home.@personal_domain"
+        type: CNAME
+        ttl: "@dns_default_timeout"
+        value: "@home_ip_target"
