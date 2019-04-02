@@ -2,6 +2,9 @@ parents:
   - module: cluster
     profile: aws-cenv
 
+  - module: cluster
+    profile: aws-storage
+
   # - module: kube
   #   profile: aws
 
