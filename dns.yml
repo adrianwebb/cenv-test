@@ -1,6 +1,6 @@
 
 config:
-  personal_domain: webb.sh
+  personal_domain: webb.app
 
   dns_default_timeout: 300
   dns_mx_timeout: 3600
@@ -19,37 +19,40 @@ domain:
   "@personal_domain":
     provider: route53
     records:
-      - name: "@personal_domain"
+      mail_servers:
+        target: "@personal_domain"
         type: MX
         ttl: "@dns_mx_timeout"
-        value: "@google_name_servers"
-      - name: "@personal_domain"
+        values: "@google_name_servers"
+      google_verification:
+        target: "@personal_domain"
         type: TXT
         ttl: "@dns_default_timeout"
-        value: "@google_site_verification"
-      - name: "@personal_domain"
-        type: TXT
-        ttl: "@dns_default_timeout"
-        value: "v=spf1 include:_spf.google.com ~all"
+        values: "@google_site_verification"
 
-      - name: "mail.@personal_domain"
+      mail_alias:
+        target: "mail.@personal_domain"
         type: CNAME
         ttl: "@dns_default_timeout"
-        value: "@google_domain_target"
-      - name: "groups.@personal_domain"
+        values: "@google_domain_target"
+      groups_alias:
+        target: "groups.@personal_domain"
         type: CNAME
         ttl: "@dns_default_timeout"
-        value: "@google_domain_target"
-      - name: "drive.@personal_domain"
+        values: "@google_domain_target"
+      docs_alias:
+        target: "drive.@personal_domain"
         type: CNAME
         ttl: "@dns_default_timeout"
-        value: "@google_domain_target"
-      - name: "calendar.@personal_domain"
+        values: "@google_domain_target"
+      calendar_alias:
+        target: "calendar.@personal_domain"
         type: CNAME
         ttl: "@dns_default_timeout"
-        value: "@google_domain_target"
+        values: "@google_domain_target"
 
-      - name: "home.@personal_domain"
+      home_ip:
+        target: "home.@personal_domain"
         type: CNAME
         ttl: "@dns_default_timeout"
-        value: "@home_ip_target"
+        values: "@home_ip_target"
