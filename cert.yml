@@ -1,0 +1,20 @@
+parents:
+  - module: cluster
+    profile: aws-network
+
+config:
+  aws_networks:
+    - aws-us-east-1
+
+certificate:
+  cenv:
+    network: "@aws_networks"
+    provider: aws
+    private_key: "@cenv_key"
+    certificate: "@cenv_cert"
+
+  cenv_ca:
+    network: "@aws_networks"
+    provider: aws
+    private_key: "@cenv_ca_key"
+    certificate: "@cenv_ca_cert"
