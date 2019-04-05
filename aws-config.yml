@@ -1,4 +1,3 @@
-
 config:
   root_domain: webb.app
   root_domain_email: "adrian@@webb.sh"
