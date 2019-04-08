@@ -2,4 +2,4 @@ parents:
   - module: cluster
     profile: aws-domain
 
-  - profile: aws-config
+  - aws-config
