@@ -1,4 +1,5 @@
 profiles: .
+tasks: tasks
 modules:
   kube:
     provider: git

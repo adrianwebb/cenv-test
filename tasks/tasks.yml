@@ -1,0 +1,17 @@
+
+test-script:
+  provider: script
+  script: scripts/hello.sh
+  roles: server-admin
+  args:
+    - "@name"
+  options:
+    name: test
+
+test-command:
+  provider: command
+  command: "ls -al @dir"
+  roles: server-admin
+  sudo: true
+  options:
+    dir: /

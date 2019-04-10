@@ -1,0 +1,22 @@
+config:
+  test_user: adrian
+
+provision:
+  test-script:
+    task: test-script
+    name: "@test_user"
+
+  test-command-1:
+    task: test-command
+    dir: /
+
+  test-command-2:
+    requires: test-command-1
+    task: test-command
+    dir: /usr/local
+
+  env-get:
+    requires:
+      - test-script
+      - test-command-2
+    command: env get
