@@ -1,0 +1,14 @@
+config:
+  test_groups:
+    - cenv
+    - core
+
+provision:
+  cenv-info:
+    module: kube
+    task: info
+    servers: groups__name__in=@test_groups
+
+  server-list:
+    requires: cenv-info
+    command: server list
