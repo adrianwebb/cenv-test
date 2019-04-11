@@ -3,20 +3,34 @@ config:
 
 provision:
   test-script:
-    task: test-script
+    task: test-remote-script
+    servers: groups__name=cenv
     name: "@test_user"
 
+  test-upload:
+    task: test-remote-upload
+    servers: groups__name=cenv
+    name: "@test_user"
+
+  test-check-upload:
+    requires: test-upload
+    task: test-remote-command
+    servers: groups__name=cenv
+    dir: /usr/local/bin
+
   test-command-1:
-    task: test-command
+    task: test-remote-command
+    servers: groups__name=cenv
     dir: /
 
   test-command-2:
     requires: test-command-1
-    task: test-command
+    task: test-remote-command
+    servers: groups__name=cenv
     dir: /usr/local
 
   env-get:
     requires:
       - test-script
       - test-command-2
-    command: env get
+    command: server list
