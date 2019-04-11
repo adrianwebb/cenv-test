@@ -7,7 +7,7 @@ provision:
   cenv-info:
     module: kube
     task: info
-    servers: groups__name__in=@test_groups
+    servers: groups.name.in=@test_groups
 
   server-list:
     requires: cenv-info
