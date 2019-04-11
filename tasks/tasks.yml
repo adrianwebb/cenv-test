@@ -15,3 +15,30 @@ test-command:
   sudo: true
   options:
     dir: /
+
+test-remote-script:
+  provider: remote_script
+  script: scripts/hello.sh
+  roles: server-admin
+  args:
+    - "@name"
+  options:
+    name: test
+
+test-remote-command:
+  provider: remote_command
+  command: "ls -al @dir"
+  roles: server-admin
+  sudo: true
+  options:
+    dir: /
+
+test-remote-upload:
+  provider: upload
+  file: scripts/hello.sh
+  remote_path: /usr/local/bin/hello
+  mode: 755
+  owner: root
+  group: root
+  roles: server-admin
+
