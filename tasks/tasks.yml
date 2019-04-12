@@ -16,6 +16,12 @@ test-command:
   options:
     dir: /
 
+test-echo:
+  provider: command
+  command: "echo @text"
+  options:
+    text: something
+
 test-remote-script:
   provider: remote_script
   script: scripts/hello.sh

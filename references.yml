@@ -1,0 +1,27 @@
+parents:
+  - module: cluster
+    profile: aws-network
+
+  - aws-config
+
+config:
+  names:
+    - admin-1
+    - admin-2
+
+provision:
+  echo-reference-1:
+    task: test-echo
+    text: "&+subnet(network=@aws_networks).@names.cidr"
+
+  echo-reference-2:
+    task: test-echo
+    text: "&!+server(network=@aws_networks;subnet=@names).cenv*.status"
+
+  echo-reference-3:
+    task: test-echo
+    text: "&config.aws_ubuntu_image.value[aws-us-east-1]"
+
+  echo-reference-4:
+    task: test-echo
+    text: "&config.user_list_fields.value[2]"
