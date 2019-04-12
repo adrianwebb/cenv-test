@@ -19,8 +19,11 @@ provision:
     text: "&!+server(network=@aws_networks;subnet=@names).cenv*.status"
 
   echo-reference-3:
+    scopes:
+      network: "@aws_networks"
+      subnet: "@names"
     task: test-echo
-    text: "&config.aws_ubuntu_image.value[aws-us-east-1]"
+    text: "&config.aws_ubuntu_image.value[<network>]"
 
   echo-reference-4:
     task: test-echo
