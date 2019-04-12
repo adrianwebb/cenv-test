@@ -24,4 +24,8 @@ provision:
 
   echo-reference-4:
     task: test-echo
+    text: "@aws_ubuntu_image[aws-us-east-1]"
+
+  echo-reference-5:
+    task: test-echo
     text: "&config.user_list_fields.value[2]"
