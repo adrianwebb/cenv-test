@@ -2,4 +2,4 @@ parents:
   - module: kube
     profile: aws-domain
 
-  - aws-config:
+  - aws-config

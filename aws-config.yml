@@ -1,6 +1,6 @@
 config:
   root_domain: webb.app
-  root_domain_email: "adrian@@webb.sh"
+  root_domain_email: "adrian@webb.sh"
 
   aws_networks:
     - aws-us-east-1

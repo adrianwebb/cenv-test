@@ -2,4 +2,4 @@ parents:
   - module: kube
     profile: aws-scale
 
-  - aws-config:
+  - aws-config
