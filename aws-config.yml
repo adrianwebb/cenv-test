@@ -3,4 +3,4 @@ config:
   root_domain_email: "adrian@webb.sh"
 
   aws_networks:
-    - aws-us-east-1
+    - aws-us-east-2
