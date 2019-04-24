@@ -1,5 +1,0 @@
-parents:
-  - module: kube
-    profile: aws-scale
-
-  - aws-config
