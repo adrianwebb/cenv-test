@@ -12,18 +12,18 @@ config:
 provision:
   echo-reference-1:
     task: test-echo
-    text: "&+subnet(network=@aws_networks).@names.cidr"
+    text: "&+subnet(network=@aws_networks):@names:cidr"
 
   echo-reference-2:
     task: test-echo
-    text: "&!+server(network=@aws_networks;subnet=@names).cenv*.status"
+    text: "&!+server(network=@aws_networks;subnet=@names):cenv*:status"
 
   echo-reference-3:
     scopes:
       network: "@aws_networks"
       subnet: "@names"
     task: test-echo
-    text: "&config.aws_ubuntu_image.value[<network>]"
+    text: "&config:aws_ubuntu_image:value[<network>]"
 
   echo-reference-4:
     task: test-echo
@@ -31,4 +31,4 @@ provision:
 
   echo-reference-5:
     task: test-echo
-    text: "&config.user_list_fields.value[2]"
+    text: "&config:user_list_fields:value[2]"
