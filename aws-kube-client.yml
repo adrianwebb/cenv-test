@@ -1,0 +1,5 @@
+parents:
+  - module: kube
+    profile: aws-client
+
+  - aws-config
