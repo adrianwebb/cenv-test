@@ -3,5 +3,5 @@ tasks: tasks
 modules:
   kube:
     provider: git
-    remote: https://github.com/venturiscm/cenv-kubernetes.git
+    remote: https://github.com/dccs-tech/mcmi-kubernetes.git
     reference: master
