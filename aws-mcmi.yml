@@ -1,5 +1,0 @@
-parents:
-  - module: cluster
-    profile: aws-mcmi
-
-  - aws-config
