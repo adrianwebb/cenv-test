@@ -1,5 +1,5 @@
 parents:
   - module: cluster
-    profile: aws-cenv
+    profile: aws-mcmi
 
   - aws-config
