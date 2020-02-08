@@ -1,0 +1,5 @@
+parents:
+  - module: api
+    profile: aws-admin-manage
+
+  - aws-config
