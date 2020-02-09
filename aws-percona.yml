@@ -1,0 +1,8 @@
+parents:
+  - module: percona
+    profile: aws
+
+  - aws-config
+
+config:
+  percona_subnet_public_ip: true
