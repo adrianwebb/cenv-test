@@ -1,5 +1,30 @@
 parents:
   - module: api
-    profile: aws-cluster-bootstrap
+    profile: aws-config
 
   - aws-config
+
+config:
+  percona_subnet_public_ip: true
+
+profile:
+  base-network:
+    module: cluster
+    profile: aws-network
+    operations: run
+
+  mcmi-network:
+    requires: base-network
+    module: api
+    profile: aws-network
+
+  percona-cluster:
+    requires: mcmi-network
+    module: percona
+    profile: aws-cluster
+
+  mcmi-cluster:
+    requires: percona-cluster
+    module: api
+    profile: aws-cluster
+    deploy_mcmi: true
