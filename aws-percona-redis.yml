@@ -1,0 +1,27 @@
+parents:
+  - module: api
+    profile: aws-config
+
+  - aws-config
+
+config:
+  percona_subnet_public_ip: true
+  redis_subnet_public_ip: true
+
+profile:
+  base-network:
+    module: cluster
+    profile: aws-network
+    operations: run
+
+  percona-cluster:
+    requires: base-network
+    module: percona
+    profile: aws-cluster
+
+  redis-cluster:
+    requires: base-network
+    module: redis
+    profile: aws-cluster
+    config:
+      redis_password: "@admin_cluster_redis_password"
