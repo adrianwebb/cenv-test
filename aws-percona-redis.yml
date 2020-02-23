@@ -5,22 +5,26 @@ parents:
   - aws-config
 
 config:
+  admin_server_host_name: admin
   percona_subnet_public_ip: true
   redis_subnet_public_ip: true
   redis_password: "@admin_cluster_redis_password"
 
 profile:
   base-network:
+    host: "@admin_server_host_name"
     module: cluster
     profile: aws-network
     operations: run
 
   percona-cluster:
+    host: "@admin_server_host_name"
     requires: base-network
     module: percona
     profile: aws-cluster
 
   redis-cluster:
+    host: "@admin_server_host_name"
     requires: base-network
     module: redis
     profile: aws-cluster

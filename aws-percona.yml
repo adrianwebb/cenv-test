@@ -1,6 +1,6 @@
 parents:
   - module: percona
-    profile: aws
+    profile: aws-cluster
 
   - aws-config
 

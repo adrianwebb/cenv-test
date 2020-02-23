@@ -1,0 +1,12 @@
+parents:
+  - aws-config
+
+config:
+  admin_server_host_name: admin
+  percona_subnet_public_ip: true
+
+profile:
+  percona-cluster:
+    host: "@admin_server_host_name"
+    module: percona
+    profile: aws-cluster
