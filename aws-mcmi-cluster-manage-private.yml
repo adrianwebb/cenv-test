@@ -1,0 +1,65 @@
+parents:
+    - aws-config
+
+config:
+    redis_password: "@admin_cluster_redis_password"
+
+profile:
+    base-network:
+        host: "@admin_server_host_name"
+        module: cluster
+        profile: aws-network
+        operations: run
+
+    mcmi-network:
+        requires: base-network
+        host: "@admin_server_host_name"
+        module: api
+        profile: aws-network
+
+    mcmi-admin:
+        requires: mcmi-network
+        host: "@admin_server_host_name"
+        module: api
+        profile: aws-server
+        deploy_mcmi: false
+
+    percona-cluster:
+        requires: mcmi-admin
+        host: "@admin_server_host_name"
+        module: percona
+        profile: aws-cluster
+
+    redis-cluster:
+        requires: mcmi-admin
+        host: "@admin_server_host_name"
+        module: redis
+        profile: aws-cluster
+
+    mcmi-cluster:
+        requires:
+            - percona-cluster
+            - redis-cluster
+        host: "@admin_server_host_name"
+        module: api
+        profile: aws-cluster
+        deploy_mcmi: true
+
+post_run:
+    mcmi-host:
+        command: host save
+        host_fields:
+            host: "@{admin_cluster_name}-@environment.@root_domain"
+
+    mcmi-admin-rotate:
+        command: user rotate
+        host: "@admin_server_host_name"
+
+    mcmi-cluster-rotate:
+        requires: mcmi-host
+        command: user rotate
+
+post_destroy:
+    mcmi-admin-host:
+        command: host rm
+        host_name: "@admin_server_host_name"
