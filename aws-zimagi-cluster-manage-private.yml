@@ -11,32 +11,32 @@ profile:
         profile: aws-network
         operations: run
 
-    mcmi-network:
+    zimagi-network:
         requires: base-network
         host: "@admin_server_host_name"
         module: api
         profile: aws-network
 
-    mcmi-admin:
-        requires: mcmi-network
+    zimagi-admin:
+        requires: zimagi-network
         host: "@admin_server_host_name"
         module: api
         profile: aws-server
         deploy_mcmi: false
 
     percona-cluster:
-        requires: mcmi-admin
+        requires: zimagi-admin
         host: "@admin_server_host_name"
         module: percona
         profile: aws-cluster
 
     redis-cluster:
-        requires: mcmi-admin
+        requires: zimagi-admin
         host: "@admin_server_host_name"
         module: redis
         profile: aws-cluster
 
-    mcmi-cluster:
+    zimagi-cluster:
         requires:
             - percona-cluster
             - redis-cluster
@@ -46,20 +46,20 @@ profile:
         deploy_mcmi: true
 
 post_run:
-    mcmi-host:
+    zimagi-host:
         command: host save
         host_fields:
-            host: "@{admin_cluster_name}-@environment.@root_domain"
+            host: "@{admin_cluster_name}.@root_domain"
 
-    mcmi-admin-rotate:
+    zimagi-admin-rotate:
         command: user rotate
         host: "@admin_server_host_name"
 
-    mcmi-cluster-rotate:
-        requires: mcmi-host
+    zimagi-cluster-rotate:
+        requires: zimagi-host
         command: user rotate
 
 post_destroy:
-    mcmi-admin-host:
+    zimagi-admin-host:
         command: host rm
         host_name: "@admin_server_host_name"
