@@ -1,0 +1,8 @@
+name: test
+
+profiles: .
+tasks: tasks
+
+modules:
+  - remote: https://github.com/dccs-tech/zimagi-kubernetes.git
+    reference: master
