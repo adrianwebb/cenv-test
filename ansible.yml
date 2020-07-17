@@ -1,14 +1,14 @@
 config:
   test_groups:
-    - cenv
+    - zimagi
     - core
 
 run:
-  cenv-info:
+  zimagi-info:
     module: kube
     task: info
     servers: groups.name in @test_groups
 
   server-list:
-    requires: cenv-info
+    requires: zimagi-info
     command: server list
