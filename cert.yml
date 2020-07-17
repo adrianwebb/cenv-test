@@ -10,11 +10,11 @@ certificate:
   cenv:
     network: "@aws_networks"
     provider: aws
-    private_key: "@cenv_key"
-    certificate: "@cenv_cert"
+    private_key: "@zimagi_key"
+    certificate: "@zimagi_cert"
 
   cenv_ca:
     network: "@aws_networks"
     provider: aws
-    private_key: "@cenv_ca_key"
-    certificate: "@cenv_ca_cert"
+    private_key: "@zimagi_ca_key"
+    certificate: "@zimagi_ca_cert"
