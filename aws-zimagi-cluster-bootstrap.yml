@@ -13,17 +13,17 @@ profile:
     profile: aws-network
     operations: run
 
-  mcmi-network:
+  zimagi-network:
     requires: base-network
     module: api
     profile: aws-network
 
   percona-cluster:
-    requires: mcmi-network
+    requires: zimagi-network
     module: percona
     profile: aws-cluster
 
-  mcmi-cluster:
+  zimagi-cluster:
     requires: percona-cluster
     module: api
     profile: aws-cluster
