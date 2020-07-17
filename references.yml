@@ -16,7 +16,7 @@ run:
 
   echo-reference-2:
     task: test-echo
-    text: "&!+server(network=@aws_networks;subnet=@names):cenv*:status"
+    text: "&!+server(network=@aws_networks;subnet=@names):zimagi*:status"
 
   echo-reference-3:
     scopes:
