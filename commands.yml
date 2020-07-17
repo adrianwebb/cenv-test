@@ -4,29 +4,29 @@ config:
 run:
   test-script:
     task: test-remote-script
-    servers: groups__name=cenv
+    servers: groups__name=zimagi
     name: "@test_user"
 
   test-upload:
     task: test-remote-upload
-    servers: groups__name=cenv
+    servers: groups__name=zimagi
     name: "@test_user"
 
   test-check-upload:
     requires: test-upload
     task: test-remote-command
-    servers: groups__name=cenv
+    servers: groups__name=zimagi
     dir: /usr/local/bin
 
   test-command-1:
     task: test-remote-command
-    servers: groups__name=cenv
+    servers: groups__name=zimagi
     dir: /
 
   test-command-2:
     requires: test-command-1
     task: test-remote-command
-    servers: groups__name=cenv
+    servers: groups__name=zimagi
     dir: /usr/local
 
   env-get:
